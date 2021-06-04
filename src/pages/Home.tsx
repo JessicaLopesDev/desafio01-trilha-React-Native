@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Alert, Text, View } from 'react-native';
 
 import { Header } from '../components/Header';
 import { MyTasksList } from '../components/MyTasksList';
@@ -11,18 +12,38 @@ interface Task {
 }
 
 export function Home() {
-  // const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<Task[]>([]);
 
   function handleAddTask(newTaskTitle: string) {
-    //TODO - add new task if it's not empty
+    if (newTaskTitle !== '') {
+      const data = {
+        id: new Date().getTime(),
+        title: newTaskTitle,
+        done: false
+      };
+      return setTasks([...tasks, data]);
+    }
+    return Alert.alert('Favor adicionar uma tarefa!');
   }
 
   function handleMarkTaskAsDone(id: number) {
-    //TODO - mark task as done if exists
+    const newArray = tasks.map(item => {
+      if(item.id === id) {
+        item.done = !item.done;
+      }
+
+      return item;
+    })
+
+    setTasks(newArray);
   }
 
   function handleRemoveTask(id: number) {
-    //TODO - remove task from state
+    const deleteItem = tasks.filter(item => {
+      return item.id !== id 
+    })
+
+    setTasks(deleteItem);
   }
 
   return (
