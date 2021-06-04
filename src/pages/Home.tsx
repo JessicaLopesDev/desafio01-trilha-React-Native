@@ -31,6 +31,7 @@ export function Home() {
       if(item.id === id) {
         item.done = !item.done;
       }
+
       return item;
     })
 
