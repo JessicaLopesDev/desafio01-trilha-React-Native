@@ -21,37 +21,39 @@ interface MyTasksListProps {
 
 export function MyTasksList({ tasks, onLongPress, onPress }: MyTasksListProps) {
   return (
-    <FlatList
-      data={tasks}
-      keyExtractor={item => String(item.id)}
-      renderItem={({ item, index }) => {
-        return (
-          <TouchableOpacity
-            testID={`button-${index}`}
-            activeOpacity={0.7}
-            onPress={() => onPress(item.id)}
-            onLongPress={() => onLongPress(item.id)}
-            style={item.done ? styles.taskButtonDone : styles.taskButton}
-          >
-            <View 
-              testID={`marker-${index}`}
-              style={item.done ? styles.taskMarkerDone : styles.taskMarker}
-            />
-            <Text style={item.done ? styles.taskTextDone : styles.taskText}>
-              {item.title}
-            </Text>
-          </TouchableOpacity>
-        )
-      }}
-      ListHeaderComponent={<FlatListHeaderComponent />}
-      ListHeaderComponentStyle={{
-        marginBottom: 20
-      }}
-      style={{
-        marginHorizontal: 24,
-        marginTop: 32
-      }}
-    />
+    <View>
+      <FlatList
+        data={tasks}
+        keyExtractor={item => String(item.id)}
+        renderItem={({ item, index }) => {
+          return (
+            <TouchableOpacity
+              testID={`button-${index}`}
+              activeOpacity={0.7}
+              onPress={() => onPress(item.id)}
+              onLongPress={() => onLongPress(item.id)}
+              style={item.done ? styles.taskButtonDone : styles.taskButton}
+            >
+              <View 
+                testID={`marker-${index}`}
+                style={item.done ? styles.taskMarkerDone : styles.taskMarker}
+              />
+              <Text style={item.done ? styles.taskTextDone : styles.taskText}>
+                {item.title}
+              </Text>
+            </TouchableOpacity>
+          )
+        }}
+        ListHeaderComponent={<FlatListHeaderComponent />}
+        ListHeaderComponentStyle={{
+          marginBottom: 20
+        }}
+        style={{
+          marginHorizontal: 24,
+          marginTop: 32,
+        }}
+      />
+    </View>
   )
 }
 
