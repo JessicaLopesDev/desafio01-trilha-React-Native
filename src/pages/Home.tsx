@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert, Text, View } from 'react-native';
+import { Alert, View } from 'react-native';
 
 import { Header } from '../components/Header';
 import { MyTasksList } from '../components/MyTasksList';
@@ -86,7 +86,7 @@ export function Home() {
 
   return (
     <>
-      <Header />
+      <Header taskCounter= {tasks.length}/>
       <View style={{backgroundColor: '#E5E5E5', flex: 1}}>
         <TodoInput addTask={handleAddTask} />
         <MyTasksList 

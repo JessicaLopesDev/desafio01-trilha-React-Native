@@ -87,7 +87,7 @@ export function TaskItem({
         </TouchableOpacity>
       </View>
 
-      <View>
+      <View style={{flexDirection: 'row'}}>
         { 
           isEditingTask ? 
             <TouchableOpacity
@@ -105,7 +105,7 @@ export function TaskItem({
             </TouchableOpacity>
         }
         <View
-          style={{width: 1, height: 24, backgroundColor: 'rgba(196, 196, 196, 0.24)'}}
+          style={{width: 1, height: 24, backgroundColor: 'rgba(196, 196, 196, 0.24)', marginHorizontal: 18}}
         >
         </View>
         <TouchableOpacity
@@ -127,8 +127,7 @@ const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: '#000'
+    alignItems: 'center'
   },
   taskButton: {
     flex: 1,
