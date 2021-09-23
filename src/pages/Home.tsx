@@ -11,6 +11,11 @@ interface Task {
   done: boolean;
 }
 
+export interface EditTaskProps {
+  taskId: number;
+  taskNewTitle: string;
+}
+
 export function Home() {
   const [tasks, setTasks] = useState<Task[]>([]);
 
@@ -22,20 +27,17 @@ export function Home() {
         'Task já cadastrada', 
         'Você não pode cadastrar uma task com o mesmo nome'
       );
-
       return;
     }
-      
+
     if (newTaskTitle !== '') {
       const data = {
         id: new Date().getTime(),
         title: newTaskTitle,
         done: false
       };
-
       return setTasks([...tasks, data]);
     }
-
     return Alert.alert('Favor adicionar uma tarefa!');
   }
 
@@ -44,10 +46,8 @@ export function Home() {
       if(item.id === id) {
         item.done = !item.done;
       }
-
       return item;
     })
-
     setTasks(newArray);
   }
 
@@ -56,9 +56,7 @@ export function Home() {
       'Remover item', 
       'Tem certeza que você deseja remover esse item?', 
       [
-        {
-          text: 'Não',
-        },
+        {text: 'Não' },
         {
           text: 'Sim',
           onPress: () => {
@@ -75,15 +73,27 @@ export function Home() {
     );
   }
 
+  function handleEditTask({ taskId, taskNewTitle }: EditTaskProps) {
+    
+    const newArray = tasks.map(item => {
+      if(item.id === taskId) {
+        item.title = taskNewTitle;
+      }
+      return item;
+    })
+    setTasks(newArray);
+  }
+
   return (
     <>
       <Header />
-      <View style={{backgroundColor: '#B2B2B2', flex: 1}}>
+      <View style={{backgroundColor: '#E5E5E5', flex: 1}}>
         <TodoInput addTask={handleAddTask} />
         <MyTasksList 
           tasks={tasks} 
-          onPress={handleMarkTaskAsDone} 
-          onLongPress={handleRemoveTask} 
+          toggleTaskDone={handleMarkTaskAsDone} 
+          removeTask={handleRemoveTask} 
+          editTask={() => handleEditTask}
         />
       </View>
 

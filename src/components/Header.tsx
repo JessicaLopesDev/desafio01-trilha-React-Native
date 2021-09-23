@@ -13,14 +13,14 @@ export function Header() {
 const styles = StyleSheet.create({
   header: {
     paddingTop: StatusBar.currentHeight,
-    paddingBottom: 44,
-    backgroundColor: '#273FAD',
+    paddingBottom: 88,
+    backgroundColor: '#8257E5',
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row'
   },
   headerText: {
-    fontSize: 24,
+    fontSize: 28,
     color: '#FFF',
     fontFamily: 'Poppins-Regular',
   }
