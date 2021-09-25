@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Alert, View } from 'react-native';
+import { Alert } from 'react-native';
 
-import { Header } from '../components/Header';
-import { MyTasksList } from '../components/MyTasksList';
-import { TodoInput } from '../components/TodoInput';
+import { Header } from '../../components/Header';
+import { MyTasksList } from '../../components/MyTaskList';
+import { TodoInput } from '../../components/TodoInput';
+
+import * as S from './styles';
 
 interface Task {
   id: number;
@@ -87,7 +89,7 @@ export function Home() {
   return (
     <>
       <Header taskCounter= {tasks.length}/>
-      <View style={{backgroundColor: '#E5E5E5', flex: 1}}>
+      <S.Container>
         <TodoInput addTask={handleAddTask} />
         <MyTasksList 
           tasks={tasks} 
@@ -95,7 +97,7 @@ export function Home() {
           removeTask={handleRemoveTask} 
           editTask={() => handleEditTask}
         />
-      </View>
+      </S.Container>
 
 
     </>

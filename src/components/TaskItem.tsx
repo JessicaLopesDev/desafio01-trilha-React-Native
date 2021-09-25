@@ -5,7 +5,7 @@ import trashIcon from '../assets/icons/trash.png';
 import checkIcon from '../assets/icons/Check.png';
 import XIcon from '../assets/icons/X.png';
 import editIcon from '../assets/icons/edit.png';
-import { Task } from './MyTasksList';
+import { Task } from '../components/MyTaskList';
 import { EditTaskProps } from '../pages/Home';
 
 interface TaskItemProps {

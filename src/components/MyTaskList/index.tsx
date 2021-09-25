@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
-import { EditTaskProps } from '../pages/Home';
-import { TaskItem } from './TaskItem';
+import { EditTaskProps } from '../../pages/Home';
+import { TaskItem } from '../TaskItem';
 
 export interface Task {
   id: number;
