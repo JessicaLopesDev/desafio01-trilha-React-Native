@@ -29,13 +29,13 @@ export function TodoInput({ addTask }: TodoInputProps) {
     >
       <S.TextInput 
         placeholder="Adicione uma tarefa"
-        placeholderTextColor={theme.colors.light_gray}
+        placeholderTextColor={theme.colors.medium_gray}
         returnKeyType="send"
         onChangeText={setTask}
         value={task}
         onSubmitEditing={handleAddNewTask}
       />
-      <S.VerticalLine></S.VerticalLine>
+      <S.VerticalLine />
       <S.Button
         testID="add-new-task-button"
         activeOpacity={0.7}

@@ -1,12 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Image, StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
 
-import trashIcon from '../assets/icons/trash.png';
-import checkIcon from '../assets/icons/Check.png';
-import XIcon from '../assets/icons/X.png';
-import editIcon from '../assets/icons/edit.png';
-import { Task } from '../components/MyTaskList';
-import { EditTaskProps } from '../pages/Home';
+import trashIcon from '../../assets/icons/trash.png';
+import checkIcon from '../../assets/icons/Check.png';
+import XIcon from '../../assets/icons/X.png';
+import editIcon from '../../assets/icons/edit.png';
+import { Task } from '../MyTaskList';
+import { EditTaskProps } from '../../pages/Home';
+
+import * as S from './styles';
+import { EditionButton } from '../EditionButton';
 
 interface TaskItemProps {
   item: Task;
@@ -59,55 +62,44 @@ export function TaskItem({
 
 
   return (
-    <View style={styles.itemContainer}>
-      <View>
-        <TouchableOpacity
-          testID={`button-${index}`}
+    <S.Container>
+      <S.LeftSide>
+        <S.CheckButton 
           activeOpacity={0.7}
           onPress={() => toggleTaskDone(item.id)}
-          style={styles.taskButton}
-        >
-          <View 
-            testID={`marker-${index}`}
-            style={item.done ? styles.taskMarkerDone : styles.taskMarker}
+          style={item.done ? styles.taskMarkerDone : styles.taskMarker}
+          testID={item.done ? `marker-${index}` : `button-${index}`}
           >
-            { item.done && (
-              <Image source={checkIcon} />
-            )}
-          </View>
+          { item.done && (
+            <S.CheckImage source={checkIcon} />
+          )}
+        </S.CheckButton>
 
-          <TextInput 
-            value={editedTask}
-            onChangeText={setEditedTask}
-            editable={isEditingTask}
-            onSubmitEditing={handleSubmitEditing}
-            style={item.done ? styles.taskTextDone : styles.taskText}
-            ref={textInputRef}
-          />
-        </TouchableOpacity>
-      </View>
+        <S.TaskTitle 
+          value={editedTask}
+          onChangeText={setEditedTask}
+          editable={isEditingTask}
+          onSubmitEditing={handleSubmitEditing}
+          style={item.done ? styles.taskTextDone : styles.taskText}
+          ref={textInputRef}
+        />
+      </S.LeftSide>
 
-      <View style={{flexDirection: 'row'}}>
-        { 
-          isEditingTask ? 
-            <TouchableOpacity
+      <S.RightSide>
+        { isEditingTask 
+          ? <EditionButton
               onPress={handleCancelEditing}
-            >
-              <Image source={XIcon} />
-            </TouchableOpacity> 
-
-            :
-
-            <TouchableOpacity
+              image={XIcon}
+            />
+          : <EditionButton
               onPress={handleStartEditing}
-            >
-              <Image source={editIcon} />
-            </TouchableOpacity>
+              image={editIcon}
+            />
         }
-        <View
+        <S.LineSeparator
           style={{width: 1, height: 24, backgroundColor: 'rgba(196, 196, 196, 0.24)', marginHorizontal: 18}}
         >
-        </View>
+        </S.LineSeparator>
         <TouchableOpacity
           disabled={isEditingTask}
           onPress={() => removeTask(item.id)}
@@ -117,18 +109,12 @@ export function TaskItem({
             style={{ opacity: isEditingTask ? 0.2 : 1 }}
           />
         </TouchableOpacity>
-      </View>
-    </View>
+      </S.RightSide>
+    </S.Container>
   )
 }
 
 const styles = StyleSheet.create({
-  itemContainer: {
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center'
-  },
   taskButton: {
     flex: 1,
     paddingVertical: 15,
