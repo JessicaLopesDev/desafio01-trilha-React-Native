@@ -90,7 +90,9 @@ export function Home() {
     <>
       <Header taskCounter= {tasks.length}/>
       <S.Container>
-        <TodoInput addTask={handleAddTask} />
+        <S.InputContainer>
+          <TodoInput addTask={handleAddTask} />
+        </S.InputContainer>
         <MyTasksList 
           tasks={tasks} 
           toggleTaskDone={handleMarkTaskAsDone} 

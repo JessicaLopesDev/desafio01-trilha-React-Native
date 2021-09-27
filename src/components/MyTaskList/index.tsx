@@ -30,7 +30,7 @@ export function MyTasksList({
         showsVerticalScrollIndicator={false}
         renderItem={({ item, index }) => {
           return (
-          <View style={styles.taskContainer}>
+          <View>
             <TaskItem 
               item={item}
               index={index}
@@ -48,10 +48,4 @@ export function MyTasksList({
   )
 }
 
-const styles = StyleSheet.create({
-  taskContainer: {
-    paddingHorizontal: 16,
-    paddingBottom: 8
-  }
-})
 
