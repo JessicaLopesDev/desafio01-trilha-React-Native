@@ -1,7 +1,8 @@
 import React from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { FlatList } from 'react-native';
 import { EditTaskProps } from '../../pages/Home';
 import { TaskItem } from '../TaskItem';
+import * as S from './styles';
 
 export interface Task {
   id: number;
@@ -26,11 +27,10 @@ export function MyTasksList({
       <FlatList
         data={tasks}
         keyExtractor={item => String(item.id)}
-        contentContainerStyle={{ paddingBottom: 24 }}
         showsVerticalScrollIndicator={false}
         renderItem={({ item, index }) => {
           return (
-          <View>
+          <S.TaskContainer>
             <TaskItem 
               item={item}
               index={index}
@@ -38,11 +38,8 @@ export function MyTasksList({
               toggleTaskDone={toggleTaskDone}
               editTask={editTask}
             />
-          </View>
+          </S.TaskContainer>
           )
-        }}
-        style={{
-          marginTop: 32,
         }}
       />
   )

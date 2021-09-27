@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
-  padding: 0 16px;
-  padding-bottom: 8px;
+export const TaskContainer = styled.View`
+  width: 100%;
+  padding: 0 24px 8px 28px;
+  margin-top: 32px;
 `;
