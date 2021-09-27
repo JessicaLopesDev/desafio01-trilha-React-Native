@@ -9,7 +9,7 @@ export const Container = styled.SafeAreaView`
 
 export const Header = styled.View`
   ${({ theme }) => css`
-    padding-bottom: 44;
+    padding-bottom: 44px;
     background-color: ${theme.colors.purple};
     justify-content: center;
     align-items: center;
@@ -19,16 +19,28 @@ export const Header = styled.View`
 
 export const LogoText = styled.Text`
   ${({ theme }) => css`
-    font-size: 24;
+    font-size: 24px;
     color: ${theme.colors.white};
-    font-family: ${theme.fonts.bold};
+    
   `}
 `;
 
-export const CounterText = styled.Text`
+export const CounterContainer = styled.View`
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const RegularText = styled.Text`
   ${({ theme }) => css`
-    font-size: 24;
+    font-size: 14px;
     color: ${theme.colors.white};
-    font-family: ${theme.fonts.medium};
+  `}
+`;
+
+export const BoldText = styled.Text`
+  ${({ theme }) => css`
+    font-size: 16px;
+    color: ${theme.colors.white};
+    font-weight: bold;
   `}
 `;

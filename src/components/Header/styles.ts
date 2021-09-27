@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components/native';
 export const Container = styled.View`
   ${({ theme }) => css`
     background-color: ${theme.colors.purple};
-    height: 200,
+    height: 170px;
     justify-content: center;
     align-items: center;
     flex-direction: row;
@@ -11,28 +11,33 @@ export const Container = styled.View`
 `;
 
 export const Header = styled.View`
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 30px;
+`;
+
+export const Logo = styled.Image`
+`;
+
+export const CounterContainer = styled.View`
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const RegularText = styled.Text`
   ${({ theme }) => css`
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0, 20;
+    font-size: 14px;
+    color: ${theme.colors.white};
   `}
 `;
 
-export const LogoText = styled.Text`
+export const BoldText = styled.Text`
   ${({ theme }) => css`
-    font-size: 24;
+    font-size: 16px;
     color: ${theme.colors.white};
-    font-family: ${theme.fonts.bold};
-  `}
-`;
-
-export const CounterText = styled.Text`
-  ${({ theme }) => css`
-    font-size: 14;
-    color: ${theme.colors.white};
-    font-family: ${theme.fonts.regular};
+    font-weight: bold;
   `}
 `;

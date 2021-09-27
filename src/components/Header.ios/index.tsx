@@ -10,7 +10,10 @@ export function Header({ taskCounter }: CounterProps) {
     <S.Container>
       <S.Header>
         <S.LogoText >to.do</S.LogoText>
-        <S.CounterText>{`Você tem ${taskCounter} tarefas`}</S.CounterText>
+        <S.CounterContainer>
+          <S.RegularText >Você tem</S.RegularText>
+          <S.BoldText >{` ${taskCounter} tarefas`}</S.BoldText>
+        </S.CounterContainer>
       </S.Header>
     </S.Container>
   )
