@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Image, StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
+import { TextInput} from 'react-native';
 
 import trashIcon from '../../assets/icons/trash.png';
 import checkIcon from '../../assets/icons/Check.png';
@@ -7,9 +7,9 @@ import XIcon from '../../assets/icons/X.png';
 import editIcon from '../../assets/icons/edit.png';
 import { Task } from '../MyTaskList';
 import { EditTaskProps } from '../../pages/Home';
+import { EditionButton } from '../EditionButton';
 
 import * as S from './styles';
-import { EditionButton } from '../EditionButton';
 
 interface TaskItemProps {
   item: Task;
@@ -65,9 +65,9 @@ export function TaskItem({
     <S.Container>
       <S.LeftSide>
         <S.CheckButton 
+          item={item}
           activeOpacity={0.7}
           onPress={() => toggleTaskDone(item.id)}
-          style={item.done ? styles.taskMarkerDone : styles.taskMarker}
           testID={item.done ? `marker-${index}` : `button-${index}`}
           >
           { item.done && (
@@ -76,11 +76,11 @@ export function TaskItem({
         </S.CheckButton>
 
         <S.TaskTitle 
+          item={item}
           value={editedTask}
           onChangeText={setEditedTask}
           editable={isEditingTask}
           onSubmitEditing={handleSubmitEditing}
-          style={item.done ? styles.taskTextDone : styles.taskText}
           ref={textInputRef}
         />
       </S.LeftSide>
@@ -96,59 +96,17 @@ export function TaskItem({
               image={editIcon}
             />
         }
-        <S.LineSeparator
-          style={{width: 1, height: 24, backgroundColor: 'rgba(196, 196, 196, 0.24)', marginHorizontal: 18}}
-        >
-        </S.LineSeparator>
-        <TouchableOpacity
+        <S.LineSeparator />
+        <S.RemoveButton
           disabled={isEditingTask}
           onPress={() => removeTask(item.id)}
         >
-          <Image 
+          <S.RemoveImage 
             source={trashIcon} 
-            style={{ opacity: isEditingTask ? 0.2 : 1 }}
+            isEditingTask={isEditingTask}
           />
-        </TouchableOpacity>
+        </S.RemoveButton>
       </S.RightSide>
     </S.Container>
   )
 }
-
-const styles = StyleSheet.create({
-  taskButton: {
-    flex: 1,
-    paddingVertical: 15,
-    marginBottom: 4,
-    borderRadius: 4,
-    flexDirection: 'row',
-    alignItems: 'center'
-  },
-  taskMarker: {
-    height: 16,
-    width: 16,
-    borderRadius: 4,
-    borderWidth: 1,
-    borderColor: '#B2B2B2',
-    marginRight: 15,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  taskText: {
-    color: '#666',
-    fontFamily: 'Inter-Medium'
-  },
-  taskMarkerDone: {
-    height: 20,
-    width: 20,
-    borderRadius: 4,
-    backgroundColor: '#1DB863',
-    marginRight: 15,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  taskTextDone: {
-    color: '#1DB863',
-    textDecorationLine: 'line-through',
-    fontFamily: 'Inter-Medium'
-  }
-})

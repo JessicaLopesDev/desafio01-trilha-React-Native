@@ -4,7 +4,6 @@ import { Alert } from 'react-native';
 import { Header } from '../../components/Header';
 import { MyTasksList } from '../../components/MyTaskList';
 import { TodoInput } from '../../components/TodoInput';
-
 import * as S from './styles';
 
 interface Task {
@@ -93,15 +92,15 @@ export function Home() {
         <S.InputContainer>
           <TodoInput addTask={handleAddTask} />
         </S.InputContainer>
-        <MyTasksList 
-          tasks={tasks} 
-          toggleTaskDone={handleMarkTaskAsDone} 
-          removeTask={handleRemoveTask} 
-          editTask={() => handleEditTask}
-        />
+        <S.TaskListContainer>
+          <MyTasksList 
+            tasks={tasks} 
+            toggleTaskDone={handleMarkTaskAsDone} 
+            removeTask={handleRemoveTask} 
+            editTask={() => handleEditTask}
+          />
+        </S.TaskListContainer>
       </S.Container>
-
-
     </>
   )
 }

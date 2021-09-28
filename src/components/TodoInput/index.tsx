@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { Platform, StyleSheet} from 'react-native';
 import { useTheme } from 'styled-components';
 import arrowIcon from '../../assets/icons/Arrow.png';
-
-
 import * as S from './styles';
 
 interface TodoInputProps {
@@ -38,7 +36,7 @@ export function TodoInput({ addTask }: TodoInputProps) {
       <S.VerticalLine />
       <S.Button
         testID="add-new-task-button"
-        activeOpacity={0.7}
+        activeOpacity={0.8}
         onPress={handleAddNewTask}
       >
         <S.Icon source={arrowIcon}/>

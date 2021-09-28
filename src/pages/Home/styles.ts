@@ -13,3 +13,7 @@ export const InputContainer = styled.View`
   margin-top: -32px;
 `;
 
+export const TaskListContainer = styled.View`
+  margin-top: 32px;
+`;
+

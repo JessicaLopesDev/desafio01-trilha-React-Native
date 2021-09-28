@@ -30,7 +30,7 @@ export function MyTasksList({
         showsVerticalScrollIndicator={false}
         renderItem={({ item, index }) => {
           return (
-          <S.TaskContainer>
+          <S.TaskContainer item={item}>
             <TaskItem 
               item={item}
               index={index}

@@ -29,8 +29,7 @@ export const VerticalLine = styled.View`
 `;
 
 export const Button = styled.TouchableOpacity`
-  height: 50px;
-  padding: 0 14px;
+  padding: 0 16px;
   justify-content: center;
   align-items: center;
   border-top-right-radius: 5px;
